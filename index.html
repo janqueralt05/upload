@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Host de Archivos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Bienvenido al Host de Archivos</h1>
+            <p>Sube y comparte archivos de manera sencilla y rápida.</p>
+            <a href="#subir" class="btn">Comenzar</a>
+        </div>
+    </section>
+
+    <!-- Sección para subir archivos -->
+    <section id="subir">
+        <h2>Sube un Archivo</h2>
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+            <label for="file">Selecciona un archivo:</label>
+            <input type="file" name="file" id="file" required>
+            <input type="submit" value="Subir Archivo">
+        </form>
+    </section>
+
+    <!-- Sección para listar archivos -->
+    <section id="archivos">
+        <h2>Archivos Disponibles</h2>
+        <ul id="file-list">
+            <!-- Aquí se incluirá la lista de archivos desde listar.php -->
+        </ul>
+    </section>
+
+    <script>
+        // Usamos fetch para cargar la lista de archivos desde listar.php
+        fetch('listar.php')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('file-list').innerHTML = data;
+        });
+    </script>
+</body>
+</html>
